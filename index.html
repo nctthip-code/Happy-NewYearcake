@@ -2,7 +2,7 @@
 <html lang="th">
 <head>
 <meta charset="UTF-8">
-<title>Surprise 🎆</title>
+<title>To Cake 🎆</title>
 <style>
 html,body{
   margin:0;
@@ -32,6 +32,26 @@ button{
   color:white;
 }
 canvas{position:fixed;top:0;left:0;}
+  fireText{
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%) scale(0.5);
+  color:#ff7eb9;
+  font-size:36px;
+  font-weight:bold;
+  text-align:center;
+  opacity:0;
+  pointer-events:none;
+  animation: popText 2s ease-out forwards;
+  text-shadow: 0 0 10px #ff4d8d;
+}
+
+@keyframes popText{
+  0%{opacity:0; transform:translate(-50%,-50%) scale(0.3);}
+  50%{opacity:1; transform:translate(-50%,-50%) scale(1.2);}
+  100%{opacity:1; transform:translate(-50%,-50%) scale(1);}
+}
 </style>
 </head>
 <body>
@@ -43,6 +63,7 @@ canvas{position:fixed;top:0;left:0;}
 
 <audio id="music" src="music.mp3"></audio>
 <canvas id="c"></canvas>
+  <div id="fireText">💖 สุขสันต์วันปีใหม่น้าเค้ก🍰🎉 💖<br>รักนะอยู่ด้วยกันไปนานๆ😘😍 💕</div>
 
 <script>
 const canvas = document.getElementById("c");
