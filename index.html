@@ -79,6 +79,7 @@ function createHeartFirework(){
       vy: y * 0.4,
       life: 100,
       color: `hsl(${Math.random()*360},100%,70%)`
+      document.addEventListener("click", start, { once: true });
     });
   }
 }
