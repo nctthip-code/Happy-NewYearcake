@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>Surprise 🎆</title>
+
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  background: black;
+  overflow: hidden;
+  height: 100%;
+}
+
+#message {
+  position: fixed;
+  top: 40%;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 36px;
+  font-family: sans-serif;
+  letter-spacing: 3px;
+  opacity: 0;
+  transition: opacity 2s;
+  z-index: 10;
+}
+
+#tap {
+  position: fixed;
+  bottom: 20%;
+  width: 100%;
+  text-align: center;
+  color: gray;
+  font-size: 18px;
+  font-family: sans-serif;
+}
+</style>
+</head>
+
+<body>
+
+<div id="message">💖 Happy New Year cake🍰🎉✨</div>
+<div id="tap">แตะหน้าจอเพื่อเริ่ม 🎵</div>
+
+<!-- เพลง -->
+<audio id="music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script src="https://cdn.jsdelivr.net/npm/fireworks-js@2/dist/fireworks.js"></script>
+
+<script>
+const fireworks = new Fireworks({
+  hue: { min: 0, max: 360 },
+  delay: { min: 15, max: 30 },
+  rocketsPoint: 50,
+  speed: 2,
+  accele
