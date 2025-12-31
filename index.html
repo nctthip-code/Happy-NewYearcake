@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>To Cake 🎆</title>
+
 <style>
 html,body{
   margin:0;
@@ -11,6 +12,8 @@ html,body{
   overflow:hidden;
   height:100%;
 }
+
+/* หน้าก่อนกด */
 #msg{
   position:fixed;
   top:50%;
@@ -22,6 +25,7 @@ html,body{
   text-align:center;
   z-index:10;
 }
+
 button{
   margin-top:20px;
   font-size:22px;
@@ -31,39 +35,66 @@ button{
   background:#ff4d8d;
   color:white;
 }
-canvas{position:fixed;top:0;left:0;}
-  fireText{
+
+canvas{
   position:fixed;
-  top:50%;
+  top:0;
+  left:0;
+}
+
+/* ✅ ข้อความลอยขึ้น */
+#fireText{
+  position:fixed;
   left:50%;
-  transform:translate(-50%,-50%) scale(0.5);
-  color:#ff7eb9;
-  font-size:36px;
+  bottom:-30%;
+  transform:translateX(-50%);
+  color:#ffb3d9;
+  font-size:34px;
   font-weight:bold;
   text-align:center;
   opacity:0;
   pointer-events:none;
-  animation: popText 2s ease-out forwards;
-  text-shadow: 0 0 10px #ff4d8d;
+  text-shadow:0 0 20px #ff4d8d;
+  line-height:1.4;
+  z-index:9;
 }
 
-@keyframes popText{
-  0%{opacity:0; transform:translate(-50%,-50%) scale(0.3);}
-  50%{opacity:1; transform:translate(-50%,-50%) scale(1.2);}
-  100%{opacity:1; transform:translate(-50%,-50%) scale(1);}
+.show{
+  animation: floatUp 6s ease-out forwards;
+}
+
+@keyframes floatUp{
+  0%{
+    bottom:-30%;
+    opacity:0;
+  }
+  20%{
+    opacity:1;
+  }
+  100%{
+    bottom:55%;
+    opacity:1;
+  }
 }
 </style>
 </head>
+
 <body>
 
 <div id="msg">
-  ✨ 💖 Happy New Year cake🍰🎉✨<br>
+  ✨ 💖 Happy New Year cake 🍰🎉 ✨<br>
   <button onclick="start()">🎆 กดเพื่อเริ่ม 🎶</button>
+</div>
+
+<!-- ✅ ข้อความเซอร์ไพรส์ -->
+<div id="fireText">
+  HAPPY NEW YEAR 🎉<br>
+  เค้ก อยู่ด้วยกันไปนานๆน้า 💕<br>
+  รักมากๆ จุ๊บๆ 😻💓
 </div>
 
 <audio id="music" src="music.mp3"></audio>
 <canvas id="c"></canvas>
-  <div id="fireText">💖 สุขสันต์วันปีใหม่น้าเค้ก🍰🎉 💖<br>รักนะอยู่ด้วยกันไปนานๆ😘😍 💕</div>
 
 <script>
 const canvas = document.getElementById("c");
@@ -79,16 +110,19 @@ function resize(){
 let hearts = [];
 
 function start(){
-  const music = document.getElementById("music");
-  music.play().catch(()=>{}); // กัน error มือถือ
+  document.getElementById("music").play().catch(()=>{});
   document.getElementById("msg").style.display="none";
+
+  // แสดงข้อความลอย
+  document.getElementById("fireText").classList.add("show");
+
   setInterval(createHeartFirework,700);
   requestAnimationFrame(loop);
 }
 
 function createHeartFirework(){
   let cx = Math.random() * canvas.width;
-  let cy = Math.random() * canvas.height/2;
+  let cy = Math.random() * canvas.height / 2;
 
   for(let t=0; t<Math.PI*2; t+=0.15){
     let x = 16 * Math.pow(Math.sin(t),3);
@@ -123,5 +157,6 @@ function loop(){
   requestAnimationFrame(loop);
 }
 </script>
+
 </body>
 </html>
