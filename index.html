@@ -179,9 +179,14 @@ let imgIndex = 0;
 
 function showNextImage(){
   const img = document.getElementById("floatImg");
+
+  // 🔀 สุ่มตำแหน่งซ้าย–ขวา (20% – 80%)
+  const randomX = Math.random() * 60 + 20;
+  img.style.left = randomX + "%";
+
   img.src = images[imgIndex];
   img.classList.remove("floatShow");
-  void img.offsetWidth;
+  void img.offsetWidth; // รี animation
   img.classList.add("floatShow");
 
   imgIndex = (imgIndex + 1) % images.length;
